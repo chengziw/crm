@@ -14,10 +14,11 @@ import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * websocket服务
- *
- * @author :  Amayadream
- * @time :  2016.01.08 09:50
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: scoket应用
+ * History:
  */
 @ServerEndpoint(value = "/chatServer", configurator = HttpSessionConfigurator.class)
 public class ChatServer {

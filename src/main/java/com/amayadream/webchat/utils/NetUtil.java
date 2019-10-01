@@ -3,10 +3,11 @@ package com.amayadream.webchat.utils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * NAME   :  LeaveSystem/com.amayadream.leave.util
- * Author :  Amayadream
- * Date   :  2015.12.29 16:22
- * TODO   :  网络工具类
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 网络工具类
+ * History:
  */
 public class NetUtil {
 

@@ -1,11 +1,5 @@
 package com.amayadream.webchat.listener;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
-import java.util.Properties;
-
 import org.apache.commons.dbcp.ConnectionFactory;
 import org.apache.commons.dbcp.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp.PoolableConnectionFactory;
@@ -14,9 +8,18 @@ import org.apache.commons.pool.ObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
+import java.util.Properties;
+
 /**
- * @author :  Amayadream
- * @date :  2016.04.06 20:17
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 数据库连接池
+ * History:
  */
 public class PoolManager {
     private static String driver = "com.mysql.jdbc.Driver";

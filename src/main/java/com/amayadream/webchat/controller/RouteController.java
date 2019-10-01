@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Author :  Amayadream
- * Date   :  2016.01.09 17:54
- * TODO   :  路由控制器
+ * FileName: RouteController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 登录接口
+ * History:TODO 路由控制器
  */
 @Controller
 @RequestMapping(value = "")

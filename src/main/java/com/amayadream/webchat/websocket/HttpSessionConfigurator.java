@@ -6,10 +6,11 @@ import javax.websocket.server.HandshakeRequest;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.websocket
- * Author :  Amayadream
- * Date   :  2016.01.12 17:10
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class HttpSessionConfigurator extends ServerEndpointConfig.Configurator {
     @Override

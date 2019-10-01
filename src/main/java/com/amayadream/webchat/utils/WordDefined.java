@@ -1,10 +1,11 @@
 package com.amayadream.webchat.utils;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.utils
- * Author :  Amayadream
- * Date   :  2016.01.09 17:18
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class WordDefined {
     public String LOGIN_USERID_ERROR = "用户名不存在!";

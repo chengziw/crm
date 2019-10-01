@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Author :  Amayadream
- * Date   :  2016.01.08 14:57
- * TODO   :  用户登录与注销
+ * FileName: LoginController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 登录接口
+ * History:
  */
 @Controller
 @RequestMapping(value = "/user")

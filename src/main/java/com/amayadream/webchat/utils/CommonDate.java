@@ -5,8 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author :  Amayadream
- * @time :  2016.02.01 16:34
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class CommonDate {
 

@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.websocket
- * Author :  Amayadream
- * Date   :  2016.01.23 17:20
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 @ServerEndpoint(value = "/videoServer", configurator = HttpSessionConfigurator.class)
 public class VideoServer {

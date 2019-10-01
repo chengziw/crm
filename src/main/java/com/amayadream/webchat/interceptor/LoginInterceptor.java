@@ -9,10 +9,11 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * NAME   :  EmailSystem/com.amayadream.interceptor
- * Author :  Amayadream
- * Date   :  2015.10.06 17:33
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 登录监听接口
+ * History:
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 

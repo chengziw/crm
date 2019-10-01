@@ -19,10 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.controller
- * Author :  Amayadream
- * Date   :  2016.01.09 17:56
- * TODO   :  用户控制器
+ * FileName: UserController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 注册接口
+ * History:
+ * TODO 用户控制器
  */
 @Controller
 @SessionAttributes("userid")

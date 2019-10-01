@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Author :  Amayadream
- * Date   :  2016.01.10 00:23
- * TODO   :
+ * FileName: LogController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 日志记录接口
+ * History:
  */
 @Controller
 @RequestMapping(value = "")

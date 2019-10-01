@@ -3,10 +3,11 @@ package com.amayadream.webchat.utils;
 import java.util.HashMap;
 
 /**
- * 公共返回类
- *
- * @author :  Amayadream
- * @time :  2016.01.30 13:57
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 封装结果集
+ * History:
  */
 public class Result extends HashMap {
     public static final int SUCCESS = 0;

@@ -6,10 +6,11 @@ import org.springframework.web.util.Log4jConfigListener;
 import javax.servlet.ServletContextEvent;
 
 /**
- * 将JDK自带的jul日志桥接到log4j中,使得启动日志被log4j接管
- *
- * @author :  Amayadream
- * @date :  2016.04.06 17:12
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 日志监听接口
+ * History:
  */
 public class LoggerListener extends Log4jConfigListener {
 

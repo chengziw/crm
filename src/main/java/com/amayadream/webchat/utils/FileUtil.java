@@ -1,16 +1,15 @@
 package com.amayadream.webchat.utils;
 
-import com.alibaba.fastjson.JSON;
-import org.junit.Test;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
 /**
- * NAME   :  EmailSystem/com.amayadream.emailsystem.util
- * Author :  Amayadream
- * Date   :  2015.12.04 22:58
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class FileUtil {
 

@@ -5,10 +5,11 @@ import com.amayadream.webchat.pojo.User;
 import java.util.List;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.service
- * Author :  Amayadream
- * Date   :  2016.01.08 14:36
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public interface IUserService {
     List<User> selectAll(int page, int pageSize);

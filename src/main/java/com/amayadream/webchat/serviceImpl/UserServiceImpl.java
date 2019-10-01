@@ -9,10 +9,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.serviceImpl
- * Author :  Amayadream
- * Date   :  2016.01.08 14:37
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 @Service(value = "userService")
 public class UserServiceImpl implements IUserService {

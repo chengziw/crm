@@ -3,10 +3,11 @@ package com.amayadream.webchat.utils;
 import com.amayadream.webchat.pojo.Log;
 
 /**
- * NAME   :  LeaveSystem/com.amayadream.leave.util
- * Author :  Amayadream
- * Date   :  2015.12.29 15:07
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class LogUtil {
 

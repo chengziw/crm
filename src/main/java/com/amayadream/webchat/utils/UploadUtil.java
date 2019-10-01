@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * NAME   :  EmailSystem/com.amayadream.emailsystem.util
- * Author :  Amayadream
- * Date   :  2015.12.05 15:22
- * TODO   :  文件上传工具类
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 文件上传
+ * History:TODO 文件服务器
  */
 public class UploadUtil {
 

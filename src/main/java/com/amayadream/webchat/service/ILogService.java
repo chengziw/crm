@@ -5,10 +5,11 @@ import com.amayadream.webchat.pojo.Log;
 import java.util.List;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.service
- * Author :  Amayadream
- * Date   :  2016.01.09 16:42
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public interface ILogService {
     List<Log> selectAll(int page, int pageSize);

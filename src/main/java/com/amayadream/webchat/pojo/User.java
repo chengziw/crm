@@ -3,10 +3,11 @@ package com.amayadream.webchat.pojo;
 import org.springframework.stereotype.Repository;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.pojo
- * Author :  Amayadream
- * Date   :  2016.01.08 14:06
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 用户实体类
+ * History:
  */
 @Repository(value = "user")
 public class User {

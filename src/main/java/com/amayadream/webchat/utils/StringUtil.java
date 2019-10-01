@@ -3,8 +3,11 @@ package com.amayadream.webchat.utils;
 import java.util.UUID;
 
 /**
- * @author :  Amayadream
- * @date :  2017.01.11 19:03
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description:
+ * History:
  */
 public class StringUtil {
 

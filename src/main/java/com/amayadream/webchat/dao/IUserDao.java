@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * NAME   :  WebChat/com.amayadream.webchat.dao
- * Author :  Amayadream
- * Date   :  2016.01.08 14:30
- * TODO   :
+ * FileName: RegisterController
+ * Author:  wangzicheng
+ * Date:     2019/10/1 0001 16:10
+ * Description: 注册接口
+ * History:
  */
 @Service(value = "userDao")
 public interface IUserDao {
