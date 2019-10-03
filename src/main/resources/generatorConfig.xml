@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 配置生成器 -->
+<generatorConfiguration>
+    <!-- 在MBG工作的时候，需要额外加载的依赖包
+     location属性指明加载jar/zip包的全路径
+  -->
+    <classPathEntry
+            location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>
+
+    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
+ 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖-->
+            <property name="autoDelimitKeywords" value="false"/>
+            <!-- 生成的Java文件的编码 -->
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 格式化java代码 -->
+            <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+            <!-- 格式化XML代码 -->
+            <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+            <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://39.107.50.176:3306/webchat?characterEncoding=utf8&amp;useUnicode=true"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.amayadream.webchat.dto"
+                            targetProject="../webchat/src/main/java">
+            <property name="constructorBased" value="false"/>
+
+            <property name="enableSubPackages" value="true"/>
+
+            <property name="immutable" value="false"/>
+
+            <property name="rootClass" value="com.amayadream.webchat.dto"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="newmapping" targetProject="src/main/resources/mapping">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.amayadream.webchat.mapping" type="XMLMAPPER"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--      <table tableName="company_manager" domainObjectName="CompanyManager" enableUpdateByExample="false"
+              enableDeleteByExample="false" enableCountByExample="false" enableSelectByExample="false"
+              modelType="flat">
+              <columnOverride column="type" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              <columnOverride column="logical_del" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              <columnOverride column="is_show" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              <columnOverride column="type" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+              </table>-->
+
+        <table tableName="user_friend" domainObjectName="UserFriend" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false" enableSelectByExample="false"
+               modelType="flat">
+            <columnOverride column="on_line" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+            <columnOverride column="logical_del" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+            <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+        </table>
+    </context>
+
+</generatorConfiguration>

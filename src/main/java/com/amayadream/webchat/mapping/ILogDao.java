@@ -1,4 +1,4 @@
-package com.amayadream.webchat.dao;
+package com.amayadream.webchat.mapping;
 
 import com.amayadream.webchat.pojo.Log;
 import org.apache.ibatis.annotations.Param;

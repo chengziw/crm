@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amayadream.webchat.mapping.UserFriendMapper">
+    <resultMap id="BaseResultMap" type="com.amayadream.webchat.dto.UserFriend">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="on_line" jdbcType="TINYINT" property="onLine"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="logical_del" jdbcType="TINYINT" property="logicalDel"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_id, user_name, on_line, status, logical_del
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_friend
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="getAllList" resultType="java.lang.String">
+    select
+    user_name
+    from user_friend where on_line=1 order by user_name;
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_friend
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.amayadream.webchat.dto.UserFriend">
+    insert into user_friend (id, user_id, user_name, 
+      on_line, status, logical_del
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{onLine,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{logicalDel,jdbcType=TINYINT}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.amayadream.webchat.dto.UserFriend">
+        insert into user_friend
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="onLine != null">
+                on_line,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="logicalDel != null">
+                logical_del,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="onLine != null">
+                #{onLine,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="logicalDel != null">
+                #{logicalDel,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.amayadream.webchat.dto.UserFriend">
+        update user_friend
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="onLine != null">
+                on_line = #{onLine,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="logicalDel != null">
+                logical_del = #{logicalDel,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.amayadream.webchat.dto.UserFriend">
+    update user_friend
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      on_line = #{onLine,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      logical_del = #{logicalDel,jdbcType=TINYINT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+    <update id="offLine">
+    update user_friend  set on_line =1 where user_name=#{userName};
+  </update>
+    <update id="onLine">
+      update user_friend  set on_line =0 where user_name=#{userName};
+  </update>
+</mapper>

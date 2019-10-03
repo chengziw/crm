@@ -42,12 +42,12 @@
         <!-- 引入数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:com/amayadream/webchat/mapping/*.xml"/>
+        <property name="mapperLocations" value="classpath:/mapping/newmapping/*.xml"/>
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.amayadream.webchat.dao"/>
+        <property name="basePackage" value="com.amayadream.webchat.mapping"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

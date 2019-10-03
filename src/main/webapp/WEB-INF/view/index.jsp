@@ -61,6 +61,11 @@
             </ul>
             <ul class="am-list am-list-static am-list-striped" id="list">
             </ul>
+            <div class="am-panel-hd">
+                <h3 class="am-panel-title">好友列表 [<span id="allnum"></span>]</h3>
+            </div>
+            <ul class="am-list am-list-static am-list-striped" id="alllist">
+            </ul>
         </div>
     </div>
     <!-- content end -->
@@ -230,6 +235,9 @@
         if (message.list != null && message.list != undefined) {      //在线列表
             showOnline(message.list);
         }
+        if (message.Alllist != null && message.Alllist != undefined) {      //所有好友列表
+            showAllFriend(message.Alllist);
+        }
     }
 
     /**
@@ -268,6 +276,22 @@
             $("#list").append(li);
         });
         $("#onlinenum").text($("#list li").length);     //获取在线人数
+    }
+
+
+    /**
+     * 展示所有好友列表
+     */
+    function showAllFriend(list) {
+        $("#alllist").html("");    //清空在线列表
+        $.each(list, function (index, item) {     //添加私聊按钮
+            var li = "<li>" + item + "</li>";
+            if ('${userid}' != item) {    //排除自己
+                li = "<li>" + item + " <button type=\"button\" class=\"am-btn am-btn-xs am-btn-primary am-round\" onclick=\"addChat('" + item + "');\"><span class=\"am-icon-phone\"><span> 发送离线消息</button></li>";
+            }
+            $("#alllist").append(li);
+        });
+        $("#allnum").text($("#alllist li").length);     //获取所有好友人数
     }
 
     /**

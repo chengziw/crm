@@ -1,6 +1,6 @@
 package com.amayadream.webchat.serviceImpl;
 
-import com.amayadream.webchat.dao.IUserDao;
+import com.amayadream.webchat.mapping.IUserDao;
 import com.amayadream.webchat.pojo.User;
 import com.amayadream.webchat.service.IUserService;
 import org.springframework.stereotype.Service;

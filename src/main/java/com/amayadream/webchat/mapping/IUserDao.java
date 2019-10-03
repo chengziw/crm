@@ -1,4 +1,4 @@
-package com.amayadream.webchat.dao;
+package com.amayadream.webchat.mapping;
 
 import com.amayadream.webchat.pojo.User;
 import org.springframework.data.repository.query.Param;

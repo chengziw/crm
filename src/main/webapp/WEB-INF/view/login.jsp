@@ -84,10 +84,6 @@
             $('#submit').attr('value', '请输入密码!!!').css('background', 'red');
             return false;
         }
-        //if(username != 'Amaya' || password != '123456'){
-        //	$('#submit').attr('value','账号或密码错误!!!').css('background','red');
-        //	return false;
-        //}
         else {
             $('#submit').attr('value', 'Logining~');
             return true;

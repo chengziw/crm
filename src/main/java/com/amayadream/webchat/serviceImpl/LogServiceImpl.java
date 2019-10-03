@@ -1,6 +1,6 @@
 package com.amayadream.webchat.serviceImpl;
 
-import com.amayadream.webchat.dao.ILogDao;
+import com.amayadream.webchat.mapping.ILogDao;
 import com.amayadream.webchat.pojo.Log;
 import com.amayadream.webchat.service.ILogService;
 import com.amayadream.webchat.utils.StringUtil;

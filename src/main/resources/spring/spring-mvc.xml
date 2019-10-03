@@ -41,6 +41,12 @@
 
     <!-- 开启注解模式 -->
     <mvc:annotation-driven/>
+    <context:component-scan base-package="com.amayadream.webchat">
+
+    </context:component-scan>
+    <!--  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
+    <!-- 扫描controller,service（controller,service层注入） -->
+
 
     <!-- 静态资源映射 -->
     <mvc:resources mapping="/static/**" location="/static/"/>

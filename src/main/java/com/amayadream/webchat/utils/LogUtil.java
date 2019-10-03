@@ -1,6 +1,8 @@
 package com.amayadream.webchat.utils;
 
 import com.amayadream.webchat.pojo.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FileName: RegisterController
@@ -19,6 +21,11 @@ public class LogUtil {
         log.setDetail(detail);
         log.setId(ip);
         return log;
+    }
+
+    public static final Logger getLogger(Object o) {
+        Logger looger = LoggerFactory.getLogger(o.getClass());
+        return looger;
     }
 
 }
