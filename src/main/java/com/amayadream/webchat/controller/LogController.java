@@ -25,12 +25,12 @@ public class LogController {
     @Resource
     private ILogService logService;
 
-    @RequestMapping(value = "{userid}/log")
-    public ModelAndView selectAll(@PathVariable("userid") String userid, @RequestParam(defaultValue = "1") int page) {
+    @RequestMapping(value = "{name}/log")
+    public ModelAndView selectAll(@PathVariable("name") String name, @RequestParam(defaultValue = "1") int page) {
         int pageSize = 5;
         ModelAndView view = new ModelAndView("log");
-        List<Log> list = logService.selectLogByUserid(userid, page, pageSize);
-        int count = logService.selectCountByUserid(userid, pageSize);
+        List<Log> list = logService.selectLogByname(name, page, pageSize);
+        int count = logService.selectCountByname(name, pageSize);
         view.addObject("list", list);
         view.addObject("count", count);
         return view;

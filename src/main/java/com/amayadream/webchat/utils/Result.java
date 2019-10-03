@@ -3,7 +3,7 @@ package com.amayadream.webchat.utils;
 import java.util.HashMap;
 
 /**
- * FileName: RegisterController
+ * FileName: Result
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 封装结果集

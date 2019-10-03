@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.Properties;
 
 /**
- * FileName: RegisterController
+ * FileName: PoolManager
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 数据库连接池

@@ -3,7 +3,7 @@ package com.amayadream.webchat.utils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * FileName: RegisterController
+ * FileName: NetUtil
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 网络工具类

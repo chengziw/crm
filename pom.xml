@@ -17,6 +17,7 @@
         <dom4j.version>1.6.1</dom4j.version>
         <log4j.version>2.5</log4j.version>
         <slf4j.version>1.7.21</slf4j.version>
+        <dubbo.version>2.6.6</dubbo.version>
     </properties>
 
     <dependencies>
@@ -96,6 +97,12 @@
             <version>1.9.13</version>
         </dependency>
         <!-- 各种json 配置开始 -->
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.60</version>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -265,6 +272,11 @@
             <version>1.2.3</version>
         </dependency>
         <!-- mybatis 配置结束 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>webchat</finalName>

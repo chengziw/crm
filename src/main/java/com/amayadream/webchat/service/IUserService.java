@@ -5,7 +5,7 @@ import com.amayadream.webchat.pojo.User;
 import java.util.List;
 
 /**
- * FileName: RegisterController
+ * FileName: IUserService
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:
@@ -14,7 +14,7 @@ import java.util.List;
 public interface IUserService {
     List<User> selectAll(int page, int pageSize);
 
-    User selectUserByUserid(String userid);
+    User selectUserByname(String name);
 
     int selectCount(int pageSize);
 
@@ -22,5 +22,5 @@ public interface IUserService {
 
     boolean update(User user);
 
-    boolean delete(String userid);
+    boolean delete(String name);
 }

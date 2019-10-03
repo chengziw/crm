@@ -1,18 +1,20 @@
 package com.amayadream.webchat.utils;
 
 /**
- * FileName: RegisterController
+ * FileName: WordDefined
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:
  * History:
  */
 public class WordDefined {
-    public String LOGIN_USERID_ERROR = "用户名不存在!";
+    public String LOGIN_name_ERROR = "用户名不存在!";
+    public String name_IS_USED = "用户名已存在!";
     public String LOGIN_PASSWORD_ERROR = "密码错误!";
-    public String LOGIN_USERID_DISABLED = "账号已被禁用!";
+    public String LOGIN_name_DISABLED = "账号已被禁用!";
     public String LOGIN_NO_LOGED = "未登录!";
     public String LOGIN_SUCCESS = "登录成功!";
+    public String REGISTER_SUCCESS = "登录成功!";
     public String LOGOUT_SUCCESS = "注销成功!";
 
     public String LOG_TYPE_LOGIN = "登陆";

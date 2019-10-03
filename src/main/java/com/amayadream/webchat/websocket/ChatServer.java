@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * FileName: RegisterController
+ * FileName: ChatServer
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: scoket应用
@@ -42,7 +42,7 @@ public class ChatServer {
     /**
      * 用户名
      */
-    private String userid;
+    private String name;
     /**
      * request的session
      */
@@ -76,17 +76,17 @@ public class ChatServer {
         addOnlineCount();
         this.httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
         //获取当前用户
-        this.userid = (String) httpSession.getAttribute("userid");
+        this.name = (String) httpSession.getAttribute("name");
         //将用户名加入在线列表
-        list.add(userid);
-        userFriendMapper.onLine(userid);
+        list.add(name);
+        userFriendMapper.onLine(name);
         //将用户名和session绑定到路由表
-        routetab.put(userid, session);
+        routetab.put(name, session);
         List<String> friends = userFriendMapper.getAllList();
         if (null == friends) {
             friends = new ArrayList<>();
         }
-        String message = getMessage("[" + userid + "]加入聊天室,当前在线人数为" + getOnlineCount() + "位", "notice", list, friends);
+        String message = getMessage("[" + name + "]加入聊天室,当前在线人数为" + getOnlineCount() + "位", "notice", list, friends);
         LOGGER.info("ChatServer.onOpen->message:{}", message);
         //广播
         broadcast(message);
@@ -103,14 +103,14 @@ public class ChatServer {
         //在线数减1
         subOnlineCount();
         //从在线列表移除这个用户
-        list.remove(userid);
-        userFriendMapper.offLine(userid);
-        routetab.remove(userid);
+        list.remove(name);
+        userFriendMapper.offLine(name);
+        routetab.remove(name);
         List<String> friends = userFriendMapper.getAllList();
         if (null == friends) {
             friends = new ArrayList<>();
         }
-        String message = getMessage("[" + userid + "]离开了聊天室,当前在线人数为" + getOnlineCount() + "位", "notice", list, friends);
+        String message = getMessage("[" + name + "]离开了聊天室,当前在线人数为" + getOnlineCount() + "位", "notice", list, friends);
         //广播
         broadcast(message);
     }

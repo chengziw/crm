@@ -3,7 +3,7 @@ package com.amayadream.webchat.utils;
 import java.io.File;
 
 /**
- * FileName: RegisterController
+ * FileName: CommonValidate
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 公共验证工具类

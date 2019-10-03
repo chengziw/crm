@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * FileName: RegisterController
+ * FileName: UploadUtil
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 文件上传
@@ -23,10 +23,10 @@ public class UploadUtil {
      *
      * @param request request
      * @param folder  上传文件夹
-     * @param userid  用户名
+     * @param name  用户名
      * @return
      */
-    public String upload(HttpServletRequest request, String folder, String userid) {
+    public String upload(HttpServletRequest request, String folder, String name) {
         FileUtil fileUtil = new FileUtil();
         String file_url = "";
         //创建一个通用的多部分解析器
@@ -48,16 +48,16 @@ public class UploadUtil {
                     if (myFileName.trim() != "") {
                         System.out.println(myFileName);
                         //重命名上传后的文件名
-                        String fileName = userid + "." + prefix;
+                        String fileName = name + "." + prefix;
                         //定义上传路径,格式为 upload/Amayadream/Amayadream.jpg
-                        String path = request.getServletContext().getRealPath("/") + folder + "/" + userid;
+                        String path = request.getServletContext().getRealPath("/") + folder + "/" + name;
                         File localFile = new File(path, fileName);
                         if (!localFile.exists()) {
                             localFile.mkdirs();
                         }
                         try {
                             file.transferTo(localFile);
-                            file_url = folder + "/" + userid + "/" + fileName;
+                            file_url = folder + "/" + name + "/" + fileName;
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

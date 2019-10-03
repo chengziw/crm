@@ -34,7 +34,7 @@
                 <c:forEach items="${list}" var="log" varStatus="status">
                     <tr>
                         <td>${status.index + 1}</td>
-                        <td>${log.userid}</td>
+                        <td>${log.name}</td>
                         <td>${log.time}</td>
                         <td>${log.type}</td>
                         <td>${log.detail}</td>

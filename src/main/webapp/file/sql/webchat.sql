@@ -21,13 +21,13 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
   `id` varchar(255) DEFAULT NULL COMMENT '日志编号',
-  `userid` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `time` varchar(255) DEFAULT NULL COMMENT '操作时间',
   `type` varchar(255) DEFAULT NULL COMMENT '操作类型',
   `detail` varchar(255) DEFAULT NULL COMMENT '详情',
   `ip` varchar(255) DEFAULT NULL COMMENT 'ip',
-  KEY `fk_log_userid` (`userid`),
-  CONSTRAINT `fk_log_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`)
+  KEY `fk_log_name` (`name`),
+  CONSTRAINT `fk_log_name` FOREIGN KEY (`name`) REFERENCES `user` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -47,7 +47,7 @@ INSERT INTO `log` VALUES ('19b6f5ec3d6a4a3aacbbae28ea23afd2', 'admin', '2017-01-
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `userid` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `password` varchar(255) DEFAULT NULL COMMENT '密码',
   `nickname` varchar(255) DEFAULT NULL COMMENT '昵称',
   `sex` int(1) DEFAULT NULL COMMENT '性别',
@@ -57,7 +57,7 @@ CREATE TABLE `user` (
   `firsttime` varchar(255) DEFAULT NULL COMMENT '注册时间',
   `lasttime` varchar(255) DEFAULT NULL COMMENT '最后登录时间',
   `status` int(1) DEFAULT NULL COMMENT '账号状态(1正常 0禁用)',
-  KEY `userid` (`userid`)
+  KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

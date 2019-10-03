@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * FileName: RegisterController
+ * FileName: LoginInterceptor
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 登录监听接口

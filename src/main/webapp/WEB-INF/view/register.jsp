@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebChat | 登陆</title>
+    <title>WebChat | 注冊</title>
     <link href="<%=path%>/static/source/css/login.css" rel='stylesheet' type='text/css'/>
     <script src="<%=path%>/static/plugins/jquery/jquery-2.1.4.min.js"></script>
     <script src="<%=path%>/static/plugins/layer/layer.js"></script>
@@ -21,7 +21,7 @@
     </div>
     <div class="clear"></div>
     <div class="avtar"><img src="<%=path%>/static/source/img/avtar.png"/></div>
-    <form id="login-form" action="<%=path%>/user/login" method="post" onsubmit="return checkLoginForm()">
+    <form id="login-form" action="<%=path%>/user/register" method="post" onsubmit="return checkRegisterForm()">
         <div class="key">
             <input type="text" id="username" name="name" placeholder="请输入账号">
         </div>
@@ -36,40 +36,7 @@
 </div>
 
 <script>
-    $(function () {
-        <c:if test="${not empty param.timeout}">
-        layer.msg('连接超时,请重新登陆!', {
-            offset: 0,
-            shift: 6
-        });
-        </c:if>
-
-        if ("${error}") {
-            $('#submit').attr('value', "${error}").css('background', 'red');
-        }
-
-        if ("${message}") {
-            layer.msg('${message}', {
-                offset: 0,
-            });
-        }
-
-        $('.close').on('click', function (c) {
-            $('.login-form').fadeOut('slow', function (c) {
-                $('.login-form').remove();
-            });
-        });
-
-        $('#username,#password').change(function () {
-            $('#submit').attr('value', 'Login').css('background', '#3ea751');
-        });
-    });
-
-    /**
-     * check the login form before user login.
-     * @returns {boolean}
-     */
-    function checkLoginForm() {
+    function checkRegisterForm() {
         var username = $('#username').val();
         var password = $('#password').val();
         if (isNull(username) && isNull(password)) {
@@ -83,8 +50,7 @@
         if (isNull(password)) {
             $('#submit').attr('value', '请输入密码!!!').css('background', 'red');
             return false;
-        }
-        else {
+        } else {
             $('#submit').attr('value', 'Logining~');
             return true;
         }

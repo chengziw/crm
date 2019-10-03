@@ -27,7 +27,7 @@ import java.io.IOException;
  * TODO 用户控制器
  */
 @Controller
-@SessionAttributes("userid")
+@SessionAttributes("name")
 public class UserController {
     @Resource
     private User user;
@@ -48,10 +48,10 @@ public class UserController {
     /**
      * 显示个人信息页面
      */
-    @RequestMapping(value = "{userid}", method = RequestMethod.GET)
-    public ModelAndView selectUserByUserid(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid) {
+    @RequestMapping(value = "{name}", method = RequestMethod.GET)
+    public ModelAndView selectUserByname(@PathVariable("name") String name, @ModelAttribute("name") String sessionid) {
         ModelAndView view = new ModelAndView("information");
-        user = userService.selectUserByUserid(userid);
+        user = userService.selectUserByname(name);
         view.addObject("user", user);
         return view;
     }
@@ -59,14 +59,14 @@ public class UserController {
     /**
      * 显示个人信息编辑页面
      *
-     * @param userid
+     * @param name
      * @param sessionid
      * @return
      */
-    @RequestMapping(value = "{userid}/config")
-    public ModelAndView setting(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid) {
+    @RequestMapping(value = "{name}/config")
+    public ModelAndView setting(@PathVariable("name") String name, @ModelAttribute("name") String sessionid) {
         ModelAndView view = new ModelAndView("info-setting");
-        user = userService.selectUserByUserid(userid);
+        user = userService.selectUserByname(name);
         view.addObject("user", user);
         return view;
     }
@@ -74,88 +74,88 @@ public class UserController {
     /**
      * 更新用户信息
      *
-     * @param userid
+     * @param name
      * @param sessionid
      * @param user
      * @return
      */
-    @RequestMapping(value = "{userid}/update", method = RequestMethod.POST)
-    public String update(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid, User user, RedirectAttributes attributes,
+    @RequestMapping(value = "{name}/update", method = RequestMethod.POST)
+    public String update(@PathVariable("name") String name, @ModelAttribute("name") String sessionid, User user, RedirectAttributes attributes,
                          NetUtil netUtil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request) {
         boolean flag = userService.update(user);
         if (flag) {
-            logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PROFILE, netUtil.getIpAddress(request)));
-            attributes.addFlashAttribute("message", "[" + userid + "]资料更新成功!");
+            logService.insert(logUtil.setLog(name, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PROFILE, netUtil.getIpAddress(request)));
+            attributes.addFlashAttribute("message", "[" + name + "]资料更新成功!");
         } else {
-            attributes.addFlashAttribute("error", "[" + userid + "]资料更新失败!");
+            attributes.addFlashAttribute("error", "[" + name + "]资料更新失败!");
         }
-        return "redirect:/{userid}/config";
+        return "redirect:/{name}/config";
     }
 
     /**
      * 修改密码
      *
-     * @param userid
+     * @param name
      * @param oldpass
      * @param newpass
      * @return
      */
-    @RequestMapping(value = "{userid}/pass", method = RequestMethod.POST)
-    public String changePassword(@PathVariable("userid") String userid, String oldpass, String newpass, RedirectAttributes attributes,
+    @RequestMapping(value = "{name}/pass", method = RequestMethod.POST)
+    public String changePassword(@PathVariable("name") String name, String oldpass, String newpass, RedirectAttributes attributes,
                                  NetUtil netUtil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request) {
-        user = userService.selectUserByUserid(userid);
+        user = userService.selectUserByname(name);
         if (oldpass.equals(user.getPassword())) {
             user.setPassword(newpass);
             boolean flag = userService.update(user);
             if (flag) {
-                logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PASSWORD, netUtil.getIpAddress(request)));
-                attributes.addFlashAttribute("message", "[" + userid + "]密码更新成功!");
+                logService.insert(logUtil.setLog(name, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PASSWORD, netUtil.getIpAddress(request)));
+                attributes.addFlashAttribute("message", "[" + name + "]密码更新成功!");
             } else {
-                attributes.addFlashAttribute("error", "[" + userid + "]密码更新失败!");
+                attributes.addFlashAttribute("error", "[" + name + "]密码更新失败!");
             }
         } else {
             attributes.addFlashAttribute("error", "密码错误!");
         }
-        return "redirect:/{userid}/config";
+        return "redirect:/{name}/config";
     }
 
     /**
      * 头像上传
      *
-     * @param userid
+     * @param name
      * @param file
      * @param request
      * @return
      */
-    @RequestMapping(value = "{userid}/upload")
-    public String upload(@PathVariable("userid") String userid, MultipartFile file, HttpServletRequest request, UploadUtil uploadUtil,
+    @RequestMapping(value = "{name}/upload")
+    public String upload(@PathVariable("name") String name, MultipartFile file, HttpServletRequest request, UploadUtil uploadUtil,
                          RedirectAttributes attributes, NetUtil netUtil, LogUtil logUtil, CommonDate date, WordDefined defined) {
         try {
-            String fileurl = uploadUtil.upload(request, "upload", userid);
-            user = userService.selectUserByUserid(userid);
+            String fileurl = uploadUtil.upload(request, "upload", name);
+            user = userService.selectUserByname(name);
             user.setProfilehead(fileurl);
             boolean flag = userService.update(user);
             if (flag) {
-                logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PROFILEHEAD, netUtil.getIpAddress(request)));
-                attributes.addFlashAttribute("message", "[" + userid + "]头像更新成功!");
+                logService.insert(logUtil.setLog(name, date.getTime24(), defined.LOG_TYPE_UPDATE, defined.LOG_DETAIL_UPDATE_PROFILEHEAD, netUtil.getIpAddress(request)));
+                attributes.addFlashAttribute("message", "[" + name + "]头像更新成功!");
             } else {
-                attributes.addFlashAttribute("error", "[" + userid + "]头像更新失败!");
+                attributes.addFlashAttribute("error", "[" + name + "]头像更新失败!");
             }
         } catch (Exception e) {
-            attributes.addFlashAttribute("error", "[" + userid + "]头像更新失败!");
+            attributes.addFlashAttribute("error", "[" + name + "]头像更新失败!");
         }
-        return "redirect:/{userid}/config";
+        return "redirect:/{name}/config";
     }
 
     /**
      * 获取用户头像
      *
-     * @param userid
+     * @param name
      */
-    @RequestMapping(value = "{userid}/head")
-    public void head(@PathVariable("userid") String userid, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "{name}/head")
+    public void head(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
         try {
-            user = userService.selectUserByUserid(userid);
+            user = userService.selectUserByname(name);
             String path = user.getProfilehead();
             String rootPath = request.getSession().getServletContext().getRealPath("/");
             String picturePath = rootPath + path;

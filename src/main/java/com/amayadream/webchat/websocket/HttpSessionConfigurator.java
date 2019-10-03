@@ -6,7 +6,7 @@ import javax.websocket.server.HandshakeRequest;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
- * FileName: RegisterController
+ * FileName: HttpSessionConfigurator
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:

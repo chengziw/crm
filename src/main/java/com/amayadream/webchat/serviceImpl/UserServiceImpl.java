@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * FileName: RegisterController
+ * FileName: UserServiceImpl
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:
@@ -27,13 +27,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User selectUserByUserid(String userid) {
-        return userDao.selectUserByUserid(userid);
+    public User selectUserByname(String name) {
+        return userDao.selectUserByname(name);
     }
 
     @Override
     public int selectCount(int pageSize) {
-        int pageCount = Integer.parseInt(userDao.selectCount().getUserid());
+        int pageCount = Integer.parseInt(userDao.selectCount().getName());
         return pageCount % pageSize == 0 ? pageCount / pageSize : pageCount / pageSize + 1;
     }
 
@@ -48,7 +48,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public boolean delete(String userid) {
-        return userDao.delete(userid);
+    public boolean delete(String name) {
+        return userDao.delete(name);
     }
 }

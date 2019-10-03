@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * FileName: RegisterController
+ * FileName: LogUtil
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:
@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
  */
 public class LogUtil {
 
-    public Log setLog(String userid, String time, String type, String detail, String ip) {
+    public Log setLog(String name, String time, String type, String detail, String ip) {
         Log log = new Log();
-        log.setUserid(userid);
+        log.setname(name);
         log.setTime(time);
         log.setType(type);
         log.setDetail(detail);

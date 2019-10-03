@@ -205,7 +205,7 @@
         ws.send(JSON.stringify({
             message: {
                 content: message,
-                from: '${userid}',
+                from: '${name}',
                 to: to,      //接收人,如果没有则置空,如果有多个接收人则用,分隔
                 time: getDateFull()
             },
@@ -254,7 +254,7 @@
      */
     function showChat(message) {
         var to = message.to == null || message.to == "" ? "全体成员" : message.to;   //获取接收人
-        var isSef = '${userid}' == message.from ? "am-comment-flip" : "";   //如果是自己则显示在右边,他人信息显示在左边
+        var isSef = '${name}' == message.from ? "am-comment-flip" : "";   //如果是自己则显示在右边,他人信息显示在左边
         var html = "<li class=\"am-comment " + isSef + " am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/" + message.from + "/head\"></a><div class=\"am-comment-main\">\n" +
             "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">" + message.from + "</a> 发表于<time> " + message.time + "</time> 发送给: " + to + " </div></header><div class=\"am-comment-bd\"> <p>" + message.content + "</p></div></div></li>";
         $("#chat").append(html);
@@ -270,7 +270,7 @@
         $("#list").html("");    //清空在线列表
         $.each(list, function (index, item) {     //添加私聊按钮
             var li = "<li>" + item + "</li>";
-            if ('${userid}' != item) {    //排除自己
+            if ('${name}' != item) {    //排除自己
                 li = "<li>" + item + " <button type=\"button\" class=\"am-btn am-btn-xs am-btn-primary am-round\" onclick=\"addChat('" + item + "');\"><span class=\"am-icon-phone\"><span> 私聊</button></li>";
             }
             $("#list").append(li);
@@ -286,7 +286,7 @@
         $("#alllist").html("");    //清空在线列表
         $.each(list, function (index, item) {     //添加私聊按钮
             var li = "<li>" + item + "</li>";
-            if ('${userid}' != item) {    //排除自己
+            if ('${name}' != item) {    //排除自己
                 li = "<li>" + item + " <button type=\"button\" class=\"am-btn am-btn-xs am-btn-primary am-round\" onclick=\"addChat('" + item + "');\"><span class=\"am-icon-phone\"><span> 发送离线消息</button></li>";
             }
             $("#alllist").append(li);
@@ -303,11 +303,11 @@
         $.getJSON("http://www.tuling123.com/openapi/api?key=6ad8b4d96861f17d68270216c880d5e3&info=" + message, function (data) {
             if (data.code == 100000) {
                 html = "<li class=\"am-comment am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/static/img/robot.jpg\"></a><div class=\"am-comment-main\">\n" +
-                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${userid}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p></div></div></li>";
+                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${name}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p></div></div></li>";
             }
             if (data.code == 200000) {
                 html = "<li class=\"am-comment am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/static/img/robot.jpg\"></a><div class=\"am-comment-main\">\n" +
-                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${userid}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p><a href=\"" + data.url + "\" target=\"_blank\">" + data.url + "</a></div></div></li>";
+                    "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> " + getDateFull() + "</time> 发送给: ${name}</div></header><div class=\"am-comment-bd\"> <p>" + data.text + "</p><a href=\"" + data.url + "\" target=\"_blank\">" + data.url + "</a></div></div></li>";
             }
             $("#chat").append(html);
             var chat = $("#chat-view");

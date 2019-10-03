@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * FileName: RegisterController
+ * FileName: IUserDao
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 注册接口
@@ -17,7 +17,7 @@ import java.util.List;
 public interface IUserDao {
     List<User> selectAll(@Param("offset") int offset, @Param("limit") int limit);
 
-    User selectUserByUserid(String userid);
+    User selectUserByname(String name);
 
     User selectCount();
 
@@ -25,5 +25,5 @@ public interface IUserDao {
 
     boolean update(User user);
 
-    boolean delete(String userid);
+    boolean delete(String name);
 }

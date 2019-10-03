@@ -3,7 +3,7 @@ package com.amayadream.webchat.pojo;
 import org.springframework.stereotype.Repository;
 
 /**
- * FileName: RegisterController
+ * FileName: Log
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description: 日志实体类
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository(value = "log")
 public class Log {
     private String id;      //日志编号
-    private String userid;  //用户名
+    private String name;  //用户名
     private String time;    //时间
     private String type;    //类型
     private String detail;  //详情
@@ -63,11 +63,11 @@ public class Log {
         this.type = type;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getname() {
+        return name;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setname(String name) {
+        this.name = name;
     }
 }

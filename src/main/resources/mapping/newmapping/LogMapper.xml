@@ -4,7 +4,7 @@
 
     <resultMap id="BaseResultMap" type="com.amayadream.webchat.pojo.Log">
         <id column="ID" property="id" jdbcType="VARCHAR"/>
-        <result column="USERID" property="userid" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="TIME" property="time" jdbcType="VARCHAR"/>
         <result column="TYPE" property="type" jdbcType="VARCHAR"/>
         <result column="DETAIL" property="detail" jdbcType="VARCHAR"/>
@@ -12,36 +12,36 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    ID, USERID, TIME, TYPE, DETAIL, IP
+    ID, name, TIME, TYPE, DETAIL, IP
   </sql>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT id, userid, time, type, detail, ip
+        SELECT id, name, time, type, detail, ip
         FROM log
         ORDER BY TIME DESC
         LIMIT #{offset}, #{limit}
   </select>
 
-    <select id="selectLogByUserid" resultMap="BaseResultMap">
-        SELECT id, userid, time, type, detail, ip
+    <select id="selectLogByname" resultMap="BaseResultMap">
+        SELECT id, name, time, type, detail, ip
         FROM log
-        WHERE USERID = #{userid, jdbcType=VARCHAR}
+        WHERE name = #{name, jdbcType=VARCHAR}
         ORDER BY TIME DESC
         LIMIT #{offset}, #{limit}
   </select>
 
     <select id="selectCount" resultMap="BaseResultMap">
-        SELECT COUNT(*) USERID FROM log
+        SELECT COUNT(*) name FROM log
     </select>
 
-    <select id="selectCountByUserid" resultMap="BaseResultMap">
-    SELECT COUNT(*) USERID FROM log
-    WHERE USERID = #{userid, jdbcType=VARCHAR}
+    <select id="selectCountByname" resultMap="BaseResultMap">
+    SELECT COUNT(*) name FROM log
+    WHERE name = #{name, jdbcType=VARCHAR}
   </select>
 
     <insert id="insert" parameterType="com.amayadream.webchat.pojo.Log">
-    INSERT INTO log (ID, USERID, TIME, TYPE, DETAIL, IP)
-    VALUES (#{id, jdbcType=VARCHAR}, #{userid, jdbcType=VARCHAR}, #{time, jdbcType=VARCHAR}, #{type, jdbcType=INTEGER},
+    INSERT INTO log (ID, name, TIME, TYPE, DETAIL, IP)
+    VALUES (#{id, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{time, jdbcType=VARCHAR}, #{type, jdbcType=INTEGER},
     #{detail, jdbcType=INTEGER}, #{ip, jdbcType=VARCHAR})
   </insert>
 
@@ -52,7 +52,7 @@
 
     <delete id="deleteThisUser" parameterType="string">
     DELETE FROM log
-    WHERE USERID = #{userid, jdbcType=VARCHAR}
+    WHERE name = #{name, jdbcType=VARCHAR}
   </delete>
 
     <delete id="deleteAll">

@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 
 /**
- * FileName: RegisterController
+ * FileName: FileUtil
  * Author:  wangzicheng
  * Date:     2019/10/1 0001 16:10
  * Description:

@@ -3,7 +3,7 @@
 <mapper namespace="com.amayadream.webchat.mapping.IUserDao">
 
     <resultMap id="BaseResultMap" type="com.amayadream.webchat.pojo.User">
-        <id column="USERID" property="userid" jdbcType="VARCHAR"/>
+        <id column="name" property="name" jdbcType="VARCHAR"/>
         <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
         <result column="NICKNAME" property="nickname" jdbcType="VARCHAR"/>
         <result column="SEX" property="sex" jdbcType="INTEGER"/>
@@ -16,34 +16,34 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS
+    id,name, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS
   </sql>
 
     <!-- 查询所有用户 -->
     <select id="selectAll" resultMap="BaseResultMap">
-      SELECT  USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS FROM user
+      SELECT  id,name, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS FROM user
       ORDER BY FIRSTTIME
       LIMIT #{offset}, #{limit}
   </select>
 
     <!-- 根据用户id查询用户 -->
-    <select id="selectUserByUserid" resultMap="BaseResultMap" parameterType="string">
+    <select id="selectUserByname" resultMap="BaseResultMap" parameterType="string">
         SELECT
         <include refid="Base_Column_List"/>
         FROM user
-        WHERE USERID = #{userid, jdbcType=VARCHAR}
+        WHERE name = #{name, jdbcType=VARCHAR}
     </select>
 
     <!-- 根据用户id查询用户 -->
     <select id="selectCount" resultMap="BaseResultMap">
-    SELECT COUNT(*) USERID
+    SELECT COUNT(*) name
     FROM user
   </select>
 
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.amayadream.webchat.pojo.User">
-    INSERT INTO user (USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS)
-    VALUES (#{userid, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{nickname, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER},
+    INSERT INTO user (id,name, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS)
+    VALUES (#{id, jdbcType=VARCHAR},#{name, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{nickname, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER},
     #{age, jdbcType=INTEGER}, #{profilehead, jdbcType=VARCHAR}, #{profile, jdbcType=VARCHAR},
     #{firsttime, jdbcType=VARCHAR}, #{lasttime, jdbcType=VARCHAR}, #{status, jdbcType=INTEGER})
   </insert>
@@ -52,6 +52,9 @@
     <update id="update" parameterType="com.amayadream.webchat.pojo.User">
         UPDATE user
         <set>
+            <if test="id != null and id != ''">
+                PASSWORD = #{id, jdbcType=VARCHAR},
+            </if>
             <if test="password != null and password != ''">
                 PASSWORD = #{password, jdbcType=VARCHAR},
             </if>
@@ -80,13 +83,13 @@
                 STATUS = #{status, jdbcType=INTEGER},
             </if>
         </set>
-        WHERE USERID = #{userid, jdbcType=VARCHAR}
+        WHERE id = #{id, jdbcType=VARCHAR}
     </update>
 
     <!-- 删除用户 -->
     <delete id="delete" parameterType="string">
     DELETE FROM user
-    WHERE USERID = #{userid, jdbcType=VARCHAR}
+    WHERE id = #{id, jdbcType=VARCHAR}
   </delete>
 
 </mapper>
