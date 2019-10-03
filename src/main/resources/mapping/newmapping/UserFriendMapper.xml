@@ -5,12 +5,14 @@
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="user_id" jdbcType="VARCHAR" property="userId"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="friend_id" jdbcType="VARCHAR" property="friendId"/>
+        <result column="friend_name" jdbcType="VARCHAR" property="friendName"/>
         <result column="on_line" jdbcType="TINYINT" property="onLine"/>
         <result column="status" jdbcType="TINYINT" property="status"/>
         <result column="logical_del" jdbcType="TINYINT" property="logicalDel"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, user_id, user_name, on_line, status, logical_del
+    id, user_id, user_name,friend_id,friend_name, on_line, status, logical_del
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
@@ -20,9 +22,15 @@
     </select>
     <select id="getAllList" resultType="java.lang.String">
     select
-    user_name
-    from user_friend where on_line=1 order by user_name;
+    friend_name
+    from user_friend where on_line=1 and user_name=#{name} order by user_name;
   </select>
+    <select id="selectByName" resultType="com.amayadream.webchat.dto.UserFriend">
+        select
+        <include refid="Base_Column_List"/>
+        from user_friend
+        where user_name = #{userName,jdbcType=VARCHAR} and friend_name = #{friendName,jdbcType=VARCHAR}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user_friend
     where id = #{id,jdbcType=VARCHAR}
@@ -56,6 +64,12 @@
             <if test="logicalDel != null">
                 logical_del,
             </if>
+            <if test="friendId != null">
+                friend_id,
+            </if>
+            <if test="friendName != null">
+                friend_name,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -75,6 +89,12 @@
             </if>
             <if test="logicalDel != null">
                 #{logicalDel,jdbcType=TINYINT},
+            </if>
+            <if test="friendId != null">
+                #{friendId,jdbcType=VARCHAR},
+            </if>
+            <if test="friendName != null">
+                #{friendName,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -109,9 +129,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
     <update id="offLine">
-    update user_friend  set on_line =1 where user_name=#{userName};
+    update user_friend  set on_line =1 where friend_name=#{userName};
   </update>
     <update id="onLine">
-      update user_friend  set on_line =0 where user_name=#{userName};
+      update user_friend  set on_line =0 where friend_name=#{userName};
   </update>
 </mapper>

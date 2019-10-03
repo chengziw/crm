@@ -64,6 +64,13 @@
             <div class="am-panel-hd">
                 <h3 class="am-panel-title">好友列表 [<span id="allnum"></span>]</h3>
             </div>
+            <ul class="am-list am-list-static am-list-striped" id="friend">
+                <li><input type="text" id="friendname" name="friendname" placeholder="请输入好友账号">
+                    <button class="am-btn am-btn-xs am-btn-danger" id="addFriend" onclick="addFriend()" data-am-button>
+                        添加
+                    </button>
+                </li>
+            </ul>
             <ul class="am-list am-list-static am-list-striped" id="alllist">
             </ul>
         </div>
@@ -343,6 +350,51 @@
         var currentdate = date.getFullYear() + "-" + appendZero(date.getMonth() + 1) + "-" + appendZero(date.getDate()) + " " + appendZero(date.getHours()) + ":" + appendZero(date.getMinutes()) + ":" + appendZero(date.getSeconds());
         return currentdate;
     }
+
+
+    /**
+     * 添加好友
+     */
+    function addFriend() {
+        var username = $('#friendname').val();
+        var friendname = '${name}';
+        // POST一个json数据
+        var data = {
+            'friendName': username,
+            'userName': friendname
+        }
+        $.ajax({
+            type: 'POST',
+            url: "/friend/addFriend",
+            data: JSON.stringify(data),    // 转化为字符串
+            contentType: 'application/json; charset=UTF-8',
+            dataType: 'json',    // 注意：这里是指希望服务端返回json格式的数据
+            success:
+                function (data) {
+                    alert(data.mess);// 这里的data就是json格式的数据
+                    if (data.mess === "添加成功") {
+                        location.reload();
+                    }
+                },
+            error: function (xhr, type) {
+            }
+        });
+    }
+
+    /**
+     * check the param if it's null or '' or undefined
+     * @param input
+     * @returns {boolean}
+     */
+    function isNull(input) {
+        if (input == null || input == '' || input == undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 </script>
 </body>
 </html>

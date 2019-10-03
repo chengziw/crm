@@ -23,7 +23,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取URI后缀
         String requestUri = request.getServletPath();
-
         if (requestUri.equalsIgnoreCase("/")) return true;
 
         //过滤不需要拦截的地址

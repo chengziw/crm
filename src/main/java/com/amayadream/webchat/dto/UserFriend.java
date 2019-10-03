@@ -8,6 +8,10 @@ public class UserFriend {
 
     private String userName;
 
+    private String friendId;
+
+    private String friendName;
+
     private Byte onLine;
 
     private Byte status;
@@ -20,6 +24,22 @@ public class UserFriend {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getFriendId() {
+        return friendId;
+    }
+
+    public void setFriendId(String friendId) {
+        this.friendId = friendId;
+    }
+
+    public String getFriendName() {
+        return friendName;
+    }
+
+    public void setFriendName(String friendName) {
+        this.friendName = friendName;
     }
 
     public String getUserId() {

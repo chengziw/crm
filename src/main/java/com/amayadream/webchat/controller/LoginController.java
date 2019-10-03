@@ -79,18 +79,26 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register")
+    public String register() {
+        return "register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(String name, String password, HttpSession session, RedirectAttributes attributes,
                            WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request) {
-        User user = userService.selectUserByname(name);
-        if (user != null) {
+        User user1 = userService.selectUserByname(name);
+        if (user1 != null) {
             attributes.addFlashAttribute("error", defined.name_IS_USED);
             return "redirect:/user/login";
         } else {
-            if (StringUtils.isNotEmpty(user.getName()) && StringUtils.isNotEmpty(password)) {
+            if (StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(password)) {
+                User user = new User();
                 user.setId(UUID.randomUUID().toString());
                 user.setNickname(name);
                 user.setSex(0);
                 user.setAge(0);
+                user.setName(name);
+                user.setPassword(password);
                 user.setProfilehead("upload/" + name + "/" + name + ".jpg");
                 user.setStatus(1);
                 user.setFirsttime(TimeUtils.getYyyymmddhhmmss(new Date()));

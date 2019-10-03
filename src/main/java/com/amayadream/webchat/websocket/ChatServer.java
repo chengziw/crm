@@ -82,7 +82,7 @@ public class ChatServer {
         userFriendMapper.onLine(name);
         //将用户名和session绑定到路由表
         routetab.put(name, session);
-        List<String> friends = userFriendMapper.getAllList();
+        List<String> friends = userFriendMapper.getAllList(name);
         if (null == friends) {
             friends = new ArrayList<>();
         }
@@ -106,7 +106,7 @@ public class ChatServer {
         list.remove(name);
         userFriendMapper.offLine(name);
         routetab.remove(name);
-        List<String> friends = userFriendMapper.getAllList();
+        List<String> friends = userFriendMapper.getAllList(name);
         if (null == friends) {
             friends = new ArrayList<>();
         }

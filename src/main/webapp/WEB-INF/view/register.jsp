@@ -30,7 +30,7 @@
             <input type="password" id="password" name="password" placeholder="请输入密码">
         </div>
         <div class="signin">
-            <input type="submit" id="submit" value="Login">
+            <input type="submit" id="submit" value="Register">
         </div>
     </form>
 </div>
@@ -51,7 +51,7 @@
             $('#submit').attr('value', '请输入密码!!!').css('background', 'red');
             return false;
         } else {
-            $('#submit').attr('value', 'Logining~');
+            $('#submit').attr('value', '注册成功，去登录~');
             return true;
         }
     }

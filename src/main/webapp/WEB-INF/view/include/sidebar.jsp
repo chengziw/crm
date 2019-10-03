@@ -24,7 +24,7 @@
         </ul>
         <div class="am-panel am-panel-default admin-sidebar-panel">
             <div class="am-panel-bd">
-                <p><span class="am-icon-tag"></span> Welcome</p>
+                <p><span class="am-icon-tag"></span> Welcome <span id="getName">${name}!</span></p>
                 <p>欢迎使用WebChat聊天室~</p>
             </div>
         </div>
