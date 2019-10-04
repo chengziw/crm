@@ -1,9 +1,11 @@
 package com.amayadream.webchat.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.amayadream.webchat.pojo.User;
 import com.amayadream.webchat.service.ILogService;
 import com.amayadream.webchat.service.IUserService;
 import com.amayadream.webchat.utils.*;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +31,8 @@ import java.io.IOException;
 @Controller
 @SessionAttributes("name")
 public class UserController {
+    private static final Logger LOGGER = LogUtil.getLogger(UserController.class);
+
     @Resource
     private User user;
     @Resource
@@ -155,10 +159,12 @@ public class UserController {
     @RequestMapping(value = "{name}/head")
     public void head(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
         try {
+            LOGGER.info("UserController.head->name:{}", name);
             user = userService.selectUserByname(name);
             String path = user.getProfilehead();
             //String rootPath = request.getSession().getServletContext().getRealPath("/");
             String picturePath = UploadUtil.getPath() + path;
+            LOGGER.info("UserController.head->picturePath:{}", picturePath);
             response.setContentType("image/jpeg; charset=UTF-8");
             ServletOutputStream outputStream = response.getOutputStream();
             FileInputStream inputStream = new FileInputStream(picturePath);
@@ -170,11 +176,11 @@ public class UserController {
             outputStream.flush();
             outputStream.close();
             inputStream.close();
-            outputStream = null;
+            LOGGER.info("UserController.head->end");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error("UserController.head->FileNotFoundException:{}", JSONObject.toJSONString(e));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("UserController.head->IOException:{}", JSONObject.toJSONString(e));
         }
     }
 

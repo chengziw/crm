@@ -93,7 +93,7 @@
                           enctype="multipart/form-data" method="post" onsubmit="return checkFileType();"
                           style="text-align: center;">
                         <div style="text-align: center;margin-bottom: 10px">
-                            <img class="am-circle" src="/${name}/head" width="140" height="140"
+                            <img class="am-circle" src="${ctx}/${name}/head" width="140" height="140"
                                  alt="Amayadream"/>
                         </div>
                         <div class="am-form-group am-form-file">
