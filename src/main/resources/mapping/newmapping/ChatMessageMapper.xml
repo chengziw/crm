@@ -21,6 +21,15 @@
         from chat_message
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <select id="getChatRecord" resultType="com.amayadream.webchat.dto.ChatMessage">
+      select
+      msg as msg,
+      from_user as fromUser,
+      to_user as toUser,
+      timestamp as timestamp
+      from chat_message
+      where (from_user=#{from} and to_user=#{to}) or (from_user=#{to} and to_user=#{from}) and type ="One"  order by timestamp;
+  </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from chat_message
     where id = #{id,jdbcType=INTEGER}

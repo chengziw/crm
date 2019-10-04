@@ -331,7 +331,30 @@
         var receive = sendto.text() == "全体成员" ? "" : sendto.text() + ",";
         if (receive.indexOf(user) == -1) {    //排除重复
             sendto.text(receive + user);
+            var friendname = '${name}';
+            // POST一个json数据
+            var data = {
+                'toUser': user,
+                'fromUser': friendname
+            }
+            $.ajax({
+                type: 'POST',
+                url: "/chat/chatRecord",
+                data: JSON.stringify(data),    // 转化为字符串
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',    // 注意：这里是指希望服务端返回json格式的数据
+                success:
+                    function (data) {
+                        $.each(data.resultList, function (index, item) {
+                            message = JSON.parse(item);
+                            showChat(message)
+                        });
+                    },
+                error: function (xhr, type) {
+                }
+            });
         }
+
     }
 
     /**
@@ -393,7 +416,6 @@
             return false;
         }
     }
-
 
 </script>
 </body>
