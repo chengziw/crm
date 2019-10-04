@@ -48,8 +48,8 @@
 
             <property name="immutable" value="false"/>
 
-            <property name="rootClass" value="com.amayadream.webchat.dto"/>
-            <property name="trimStrings" value="true"/>
+            <!--    <property name="rootClass" value="com.amayadream.webchat.dto"/>
+                <property name="trimStrings" value="true"/>-->
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="newmapping" targetProject="src/main/resources/mapping">
@@ -73,12 +73,12 @@
               <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>
               </table>-->
 
-        <table tableName="user_friend" domainObjectName="UserFriend" enableUpdateByExample="false"
+        <table tableName="chat_message" domainObjectName="ChatMessage" enableUpdateByExample="false"
                enableDeleteByExample="false" enableCountByExample="false" enableSelectByExample="false"
                modelType="flat">
-            <columnOverride column="on_line" jdbcType="TINYINT" javaType="java.lang.Byte"/>
-            <columnOverride column="logical_del" jdbcType="TINYINT" javaType="java.lang.Byte"/>
-            <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+            <!--            <columnOverride column="on_line" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+                        <columnOverride column="logical_del" jdbcType="TINYINT" javaType="java.lang.Byte"/>
+                        <columnOverride column="status" jdbcType="TINYINT" javaType="java.lang.Byte"/>-->
         </table>
     </context>
 

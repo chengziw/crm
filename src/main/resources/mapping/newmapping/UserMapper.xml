@@ -39,6 +39,9 @@
     SELECT COUNT(*) name
     FROM user
   </select>
+    <select id="selectAllPeople" resultType="com.amayadream.webchat.pojo.User">
+     SELECT  id,name, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS FROM user
+    </select>
 
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.amayadream.webchat.pojo.User">

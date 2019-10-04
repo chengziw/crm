@@ -2,7 +2,10 @@ package com.amayadream.webchat.websocket;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.amayadream.webchat.mapping.IUserDao;
 import com.amayadream.webchat.mapping.UserFriendMapper;
+import com.amayadream.webchat.pojo.User;
+import com.amayadream.webchat.utils.ChatUtil;
 import com.amayadream.webchat.utils.LogUtil;
 import com.amayadream.webchat.utils.SpringUtil;
 import org.slf4j.Logger;
@@ -29,7 +32,11 @@ public class ChatServer {
 
     private static final Logger LOGGER = LogUtil.getLogger(ChatServer.class);
 
+    private IUserDao userMapper = SpringUtil.getBean(IUserDao.class);
+
     private UserFriendMapper userFriendMapper = SpringUtil.getBean(UserFriendMapper.class);
+
+
     /**
      * 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
      */
@@ -52,10 +59,6 @@ public class ChatServer {
      * 在线列表,记录用户名称
      */
     private static List list = new ArrayList<>();
-    /**
-     * 所有好友列表,记录用户名称
-     */
-    private static List Alllist = new ArrayList<>();
     /**
      * 用户名和websocket的session绑定的路由表
      */
@@ -128,12 +131,19 @@ public class ChatServer {
         //如果to为空,则广播;如果不为空,则对指定的用户发送消息
         if (message.get("to") == null || message.get("to").equals("")) {
             broadcast(_message);
+            List<User> list = userMapper.selectAllPeople();
+            if (null != list && list.size() > 0) {
+                for (User user : list) {
+                    ChatUtil.sentToAll(_message, message, user);
+                }
+            }
         } else {
             String[] userlist = message.get("to").toString().split(",");
             //发送给自己,这个别忘了
             singleSend(_message, (Session) routetab.get(message.get("from")));
             for (String user : userlist) {
                 if (!user.equals(message.get("from"))) {
+                    ChatUtil.sentToOne(_message, message, user);
                     //分别发送给每个指定用户
                     singleSend(_message, (Session) routetab.get(user));
                 }
@@ -148,7 +158,7 @@ public class ChatServer {
      */
     @OnError
     public void onError(Throwable error) {
-        LOGGER.error("ChatServer.onError->error:{}", error.getMessage());
+        LOGGER.error("ChatServer.onError->error:{}", error);
     }
 
     /**

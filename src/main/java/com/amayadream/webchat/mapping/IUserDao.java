@@ -26,4 +26,6 @@ public interface IUserDao {
     boolean update(User user);
 
     boolean delete(String name);
+
+    List<User> selectAllPeople();
 }

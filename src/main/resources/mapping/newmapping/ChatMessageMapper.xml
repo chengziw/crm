@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amayadream.webchat.mapping.ChatMessageMapper">
+    <resultMap id="BaseResultMap" type="com.amayadream.webchat.dto.ChatMessage">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="msg_id" jdbcType="VARCHAR" property="msgId"/>
+        <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp"/>
+        <result column="direction" jdbcType="VARCHAR" property="direction"/>
+        <result column="to_user" jdbcType="VARCHAR" property="toUser"/>
+        <result column="from_user" jdbcType="VARCHAR" property="fromUser"/>
+        <result column="msg" jdbcType="VARCHAR" property="msg"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, msg_id, timestamp, direction, to_user, from_user, msg, type, url
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chat_message
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from chat_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.amayadream.webchat.dto.ChatMessage">
+    insert into chat_message (id, msg_id, timestamp, 
+      direction, to_user, from_user, 
+      msg, type, url)
+    values (#{id,jdbcType=INTEGER}, #{msgId,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP}, 
+      #{direction,jdbcType=VARCHAR}, #{toUser,jdbcType=VARCHAR}, #{fromUser,jdbcType=VARCHAR}, 
+      #{msg,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.amayadream.webchat.dto.ChatMessage">
+        insert into chat_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="msgId != null">
+                msg_id,
+            </if>
+            <if test="timestamp != null">
+                timestamp,
+            </if>
+            <if test="direction != null">
+                direction,
+            </if>
+            <if test="toUser != null">
+                to_user,
+            </if>
+            <if test="fromUser != null">
+                from_user,
+            </if>
+            <if test="msg != null">
+                msg,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="msgId != null">
+                #{msgId,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+            <if test="direction != null">
+                #{direction,jdbcType=VARCHAR},
+            </if>
+            <if test="toUser != null">
+                #{toUser,jdbcType=VARCHAR},
+            </if>
+            <if test="fromUser != null">
+                #{fromUser,jdbcType=VARCHAR},
+            </if>
+            <if test="msg != null">
+                #{msg,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.amayadream.webchat.dto.ChatMessage">
+        update chat_message
+        <set>
+            <if test="msgId != null">
+                msg_id = #{msgId,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp != null">
+                timestamp = #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+            <if test="direction != null">
+                direction = #{direction,jdbcType=VARCHAR},
+            </if>
+            <if test="toUser != null">
+                to_user = #{toUser,jdbcType=VARCHAR},
+            </if>
+            <if test="fromUser != null">
+                from_user = #{fromUser,jdbcType=VARCHAR},
+            </if>
+            <if test="msg != null">
+                msg = #{msg,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.amayadream.webchat.dto.ChatMessage">
+    update chat_message
+    set msg_id = #{msgId,jdbcType=VARCHAR},
+      timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      direction = #{direction,jdbcType=VARCHAR},
+      to_user = #{toUser,jdbcType=VARCHAR},
+      from_user = #{fromUser,jdbcType=VARCHAR},
+      msg = #{msg,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
