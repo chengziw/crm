@@ -50,7 +50,8 @@ public class UploadUtil {
                         //重命名上传后的文件名
                         String fileName = name + "." + prefix;
                         //定义上传路径,格式为 upload/Amayadream/Amayadream.jpg
-                        String path = request.getServletContext().getRealPath("/") + folder + "/" + name;
+                        // String path = request.getServletContext().getRealPath("/") + folder + "/" + name;
+                        String path = getPath() + folder + "/" + name;
                         File localFile = new File(path, fileName);
                         if (!localFile.exists()) {
                             localFile.mkdirs();
@@ -66,5 +67,26 @@ public class UploadUtil {
             }
         }
         return file_url;
+    }
+
+
+    public static String getPath() {
+        String system = System.getProperty("os.name");
+        if (system.startsWith("Windows")) { // Windows系统，用于本地测试
+            return "D:\\\\tmp\\\\";
+        } else if ("Linux".equalsIgnoreCase(system)) { // linux 系统
+            return "/tmp/";
+        }
+        return "/tmp/";
+    }
+
+    public static String getHtmlPath() {
+        String system = System.getProperty("os.name");
+        if (system.startsWith("Windows")) { // Windows系统，用于本地测试
+            return "D:/tmp";
+        } else if ("Linux".equalsIgnoreCase(system)) { // linux 系统
+            return "/tmp/";
+        }
+        return "/tmp/";
     }
 }

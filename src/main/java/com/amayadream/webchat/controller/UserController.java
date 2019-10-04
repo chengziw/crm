@@ -157,8 +157,8 @@ public class UserController {
         try {
             user = userService.selectUserByname(name);
             String path = user.getProfilehead();
-            String rootPath = request.getSession().getServletContext().getRealPath("/");
-            String picturePath = rootPath + path;
+            //String rootPath = request.getSession().getServletContext().getRealPath("/");
+            String picturePath = UploadUtil.getPath() + path;
             response.setContentType("image/jpeg; charset=UTF-8");
             ServletOutputStream outputStream = response.getOutputStream();
             FileInputStream inputStream = new FileInputStream(picturePath);
