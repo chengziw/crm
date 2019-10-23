@@ -50,6 +50,15 @@ public class UserController {
     }
 
     /**
+     * 客户端聊天主页
+     */
+    @RequestMapping(value = "clientchat")
+    public ModelAndView getClientIndex() {
+        ModelAndView view = new ModelAndView("clientindex");
+        return view;
+    }
+
+    /**
      * 显示个人信息页面
      */
     @RequestMapping(value = "{name}", method = RequestMethod.GET)

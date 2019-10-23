@@ -54,9 +54,18 @@ public class LoginController {
                 attributes.addFlashAttribute("error", defined.LOGIN_PASSWORD_ERROR);
                 return "redirect:/user/login";
             } else {
-                if (user.getStatus() != 1) {
+                if (user.getStatus() != 1 && user.getStatus() != 2) {
                     attributes.addFlashAttribute("error", defined.LOGIN_name_DISABLED);
                     return "redirect:/user/login";
+                } else if (user.getStatus() == 2) {
+                    logService.insert(logUtil.setLog(name, date.getTime24(), defined.LOG_TYPE_LOGIN, defined.LOG_DETAIL_USER_LOGIN, netUtil.getIpAddress(request)));
+                    session.setAttribute("name", name);
+                    session.setAttribute("login_status", true);
+                    user.setLasttime(date.getTime24());
+                    userService.update(user);
+                    attributes.addFlashAttribute("message", defined.CLIENT_LOGIN_SUCCESS);
+                    return "redirect:/clientchat";
+
                 } else {
                     logService.insert(logUtil.setLog(name, date.getTime24(), defined.LOG_TYPE_LOGIN, defined.LOG_DETAIL_USER_LOGIN, netUtil.getIpAddress(request)));
                     session.setAttribute("name", name);

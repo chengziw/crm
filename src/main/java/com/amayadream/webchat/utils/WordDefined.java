@@ -14,6 +14,7 @@ public class WordDefined {
     public String LOGIN_name_DISABLED = "账号已被禁用!";
     public String LOGIN_NO_LOGED = "未登录!";
     public String LOGIN_SUCCESS = "登录成功!";
+    public String CLIENT_LOGIN_SUCCESS = "客户端登录成功!";
     public String REGISTER_SUCCESS = "注册成功!";
     public String LOGOUT_SUCCESS = "注销成功!";
 
