@@ -6,12 +6,13 @@ import org.apache.commons.dbcp.PoolableConnectionFactory;
 import org.apache.commons.dbcp.PoolingDriver;
 import org.apache.commons.pool.ObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPool;
-import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -155,25 +156,4 @@ public class PoolManager {
         freeConnection(con);
     }
 
-    @Test
-    public void test() {
-        try {
-            Connection conn = PoolManager.getConnection();
-            if (conn != null) {
-                Statement statement = conn.createStatement();
-                ResultSet rs = statement.executeQuery("select * from log");
-                int c = rs.getMetaData().getColumnCount();
-                while (rs.next()) {
-                    System.out.println();
-                    for (int i = 1; i <= c; i++) {
-                        System.out.print(rs.getObject(i));
-                    }
-                }
-                rs.close();
-            }
-            PoolManager.freeConnection(conn);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
