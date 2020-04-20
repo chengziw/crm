@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.2.4.RELEASE</spring.version>
+        <spring.version>5.2.5.RELEASE</spring.version>
         <mybatis.version>3.2.6</mybatis.version>
         <mysql-jdbc.version>5.1.38</mysql-jdbc.version>
         <activiti.version>5.19.0</activiti.version>
@@ -287,7 +287,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>5.2.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
